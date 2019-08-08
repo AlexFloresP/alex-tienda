@@ -3,8 +3,14 @@ package com.tienda.productos.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.tienda.productos.model.Tienda;
+@RestController
+@RequestMapping("/api/v1/tienda")
 
 public class TiendaController {
 	
@@ -20,6 +26,8 @@ public class TiendaController {
 		
 		tiendas.add(producto);
 	}
+	
+	@PostMapping
 	public Tienda crearNuevo(Tienda tienda) {
 		tienda.setId(tiendas.size()+1+"");
 		tiendas.add(tienda);
@@ -27,7 +35,7 @@ public class TiendaController {
 		
 		
 	}
-	
+	@GetMapping
 	public List<Tienda> obtener(){
 		return tiendas;
 	}
